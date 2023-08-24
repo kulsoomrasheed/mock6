@@ -1,5 +1,6 @@
 const mongoose= require('mongoose')
-const connection = mongoose.connect("mongodb+srv://kulsoom:rasheed@cluster0.uypmrfo.mongodb.net/mock6?retryWrites=true&w=majority")
+require('dotenv').config()
+const connection = mongoose.connect(process.env.mongoURL)
 module.exports ={
     connection
 }

@@ -1,24 +1,28 @@
 const mongoose= require('mongoose')
+const userSchema=mongoose.Schema({
+    email:String,
+    pass:String,
+    confirmPass:String,
 
-const BoardModel = mongoose.model('Board', {
-    name: String,
-    tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
-  });
-  
-  // Task model
-  const TaskModel = mongoose.model('Task', {
-    title: String,
-    description: String,
-    status: { type: String, enum: ['Todo', 'Doing', 'Done'], default: 'Todo' },
-    subtasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Subtask' }],
-  });
-  
-  // Subtask model
-  const SubtaskModel = mongoose.model('Subtask', {
-    title: String,
-    isCompleted: Boolean,
-  })
+},{
+    versionKey:false}
+    )
+    const UserModel=mongoose.model('User',userSchema)
 
+
+    const docSchema=mongoose.Schema({
+        name:String,
+        image:String,
+        specialization:String,
+        fee:Number,
+        experience:Number,
+        date : String,
+        location:String,
+        slots:Number
+    },{
+        versionKey:false}
+        )
+        const DocModel=mongoose.model('Doctor',docSchema)
         module.exports={
-            BoardModel,TaskModel,SubtaskModel
+            UserModel,DocModel
         }
